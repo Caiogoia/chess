@@ -2,13 +2,17 @@ import { Grid } from "@material-ui/core";
 import History from "./components/history";
 import Table from "./components/table";
 
+import useStyles from './styleApp'
+
 function App() {
+  const classes = useStyles()
   return (
-    <Grid container>
-      <Grid item xs={12}>
+    <Grid container className={classes.container} spacing={3}>
+      <Grid item xs={8} style={{background:"purple"}}>
+        <h1>table</h1>
         {/* <Table/> */}
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={4}>
         <History />
       </Grid>
     </Grid>
