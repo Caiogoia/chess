@@ -9,7 +9,7 @@ function App() {
         <Grid item xs={8}>
           <Table/>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={4}>
           <History/>
       </Grid>
     </Grid>
