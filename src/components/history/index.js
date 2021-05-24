@@ -1,11 +1,10 @@
-import { Box } from '@material-ui/core'
+import { Box, Paper, Typography } from "@material-ui/core";
 
 const History = () => {
-    return(
-       <Box>
-           <h1>History</h1>
-       </Box>
-    )
-}
-
-export default History
+  return (
+    <Paper className={boxPaper}>
+      <Typography>Historico das jogadas</Typography>
+    </Paper>
+  );
+};
+export default History;
