@@ -1,7 +1,7 @@
 import { Box, Paper, Typography } from "@material-ui/core";
-import useStyles from './styles'
+import useStyles from "./styles";
 const History = () => {
-    const classes = useStyles()
+  const classes = useStyles();
 
   return (
     <Paper className={classes.boxPaper}>
