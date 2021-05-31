@@ -3,8 +3,9 @@ import React, { Component } from "react";
 import { render } from "react-dom";
 
 const Table = ({ getCoordinates, handleClick }) => {
-  const width = 500
-  const height = 500
+  const width = 500;
+  const height = 500;
+  const l = ["a", "b", "c", "d", "e", "f", "g", "h"];
   const createBoard = () => {
     let arrFunc = [];
     for (let i = 0; i < 8; i++) {
@@ -23,34 +24,64 @@ const Table = ({ getCoordinates, handleClick }) => {
     return arrFunc;
   };
   const createNumbers = () => {
-    const arr = []
-    for(let x = 0; x<8; x++){
+    const arr = [];
+    for (let x = 0; x < 8; x++) {
       arr.push({
         label: x + 1,
-         x: width
-      })
+        x: 390,
+        y: x * 50 + 5,
+        fill: (x + 1) % 2 === 0 ? "#B58863" : "#F0D9B5",
+      });
     }
     return arr;
-  }
+  };
+  const createLetters = () => {
+    const arr = [];
+    for (let x = 0; x < 8; x++) {
+      arr.push({
+        label: l[x],
+        x: x * 50 + 5,
+        y: 385,
+        fill: (x + 1) % 2 === 0 ? "#B58863" : "#F0D9B5",
+      });
+    }
+    return arr;
+  };
   const arr = createBoard();
-  const numbers = createNumbers()
+  const numbers = createNumbers();
+  const letters = createLetters();
   return (
     <Stage width={500} height={500}>
       <Layer>
-        {arr.map((row) => {
-        return row.map((square) => {
-           return <Rect
-              x={square.x}
-              y={square.y}
-              width={square.width}
-              height={square.height}
-              fill={square.fill}
-              onClick={handleClick}
-            />;
+        {arr.map((row, letter) => {
+          return row.map((square, number) => {
+            return (
+              <Rect
+                x={square.x}
+                y={square.y}
+                width={square.width}
+                height={square.height}
+                fill={square.fill}
+                onClick={() => handleClick(l[letter], number + 1)}
+              />
+            );
           });
         })}
-        {numbers.map(number => (
-          <Text text={number.label} x={50} y={5}/>
+        {numbers.map((number, index) => (
+          <Text
+            text={number.label}
+            x={number.x}
+            y={number.y}
+            fill={number.fill}
+          />
+        ))}
+        {letters.map((letter, index) => (
+          <Text
+            text={letter.label}
+            x={letter.x}
+            y={letter.y}
+            fill={letter.fill}
+          />
         ))}
       </Layer>
     </Stage>

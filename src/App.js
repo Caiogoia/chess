@@ -5,12 +5,11 @@ import Table from "./components/table";
 import useStyles from "./styleApp";
 
 function App() {
-  const jogadas = ["jogada1","jogada1","jogada1"]
+  const jogadas = ["jogada1", "jogada1", "jogada1"];
 
-
-  const handleClick = () => {
-    console.log("cliquei na peça")
-  }
+  const handleClick = (letter, number) => {
+    console.log([letter, number]);
+  };
   // const classes = useStyles()
   // const [position, setPosition] = useState({ x: 1, y: 1 })
   // const [history] = useState([])
@@ -31,10 +30,10 @@ function App() {
     <Grid container className={classes.container} spacing={3}>
       <Grid item xs={8}>
         {/* <h1>table</h1> */}
-        <Table handleClick={handleClick}/>
+        <Table handleClick={handleClick} />
       </Grid>
       <Grid item xs={4}>
-        <History  jogadas={jogadas}/>
+        <History jogadas={jogadas} />
       </Grid>
     </Grid>
   );
