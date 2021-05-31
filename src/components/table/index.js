@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { render } from "react-dom";
 
 const Table = ({ getCoordinates, handleClick }) => {
+  const width = 500
+  const height = 500
   const createBoard = () => {
     let arrFunc = [];
     for (let i = 0; i < 8; i++) {
@@ -20,14 +22,24 @@ const Table = ({ getCoordinates, handleClick }) => {
     }
     return arrFunc;
   };
-
+  const createNumbers = () => {
+    const arr = []
+    for(let x = 0; x<8; x++){
+      arr.push({
+        label: x + 1,
+         x: width
+      })
+    }
+    return arr;
+  }
   const arr = createBoard();
+  const numbers = createNumbers()
   return (
     <Stage width={500} height={500}>
       <Layer>
         {arr.map((row) => {
-          row.map((square) => {
-            <Rect
+        return row.map((square) => {
+           return <Rect
               x={square.x}
               y={square.y}
               width={square.width}
@@ -37,6 +49,9 @@ const Table = ({ getCoordinates, handleClick }) => {
             />;
           });
         })}
+        {numbers.map(number => (
+          <Text text={number.label} x={50} y={5}/>
+        ))}
       </Layer>
     </Stage>
   );
