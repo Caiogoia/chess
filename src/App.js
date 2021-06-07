@@ -8,9 +8,9 @@ import useStyles from "./styleApp";
 function App() {
   const [coordinates, setCoordinates] = useState([]);
   const handleClick = (letter, number) => {
-    setCoordinates([...coordinates,[letter, number]])
+    setCoordinates([...coordinates, [letter, number]]);
   };
-  console.log(coordinates)
+  console.log(coordinates);
   const classes = useStyles();
   return (
     <Grid container className={classes.container} spacing={3}>
@@ -19,7 +19,7 @@ function App() {
         <Table handleClick={handleClick} />
       </Grid>
       <Grid item xs={4}>
-        <History coordinates={coordinates}/>
+        <History coordinates={coordinates} />
       </Grid>
     </Grid>
   );

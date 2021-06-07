@@ -51,7 +51,7 @@ const Table = ({ getCoordinates, handleClick }) => {
   const numbers = createNumbers();
   const letters = createLetters();
   return (
-    <Stage width={500} height={500}>
+    <Stage width={400} height={400}>
       <Layer>
         {arr.map((row, letter) => {
           return row.map((square, number) => {
@@ -62,13 +62,14 @@ const Table = ({ getCoordinates, handleClick }) => {
                 width={square.width}
                 height={square.height}
                 fill={square.fill}
-                onClick={() => handleClick(l[letter], number + 1)}
+                onClick={() => handleClick(l[letter], 8 - number)}
               />
             );
           });
         })}
         {numbers.map((number, index) => (
           <Text
+            fontStyle="bold"
             text={number.label}
             x={number.x}
             y={number.y}
@@ -77,6 +78,7 @@ const Table = ({ getCoordinates, handleClick }) => {
         ))}
         {letters.map((letter, index) => (
           <Text
+            fontStyle="bold"
             text={letter.label}
             x={letter.x}
             y={letter.y}
