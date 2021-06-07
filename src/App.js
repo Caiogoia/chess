@@ -6,11 +6,11 @@ import { useState } from "react";
 import useStyles from "./styleApp";
 
 function App() {
-  const [coordinates, setCoordinates] = useState();
+  const [coordinates, setCoordinates] = useState([]);
   const handleClick = (letter, number) => {
-    console.log([letter, number]);
+    setCoordinates([...coordinates,[letter, number]])
   };
-
+  console.log(coordinates)
   const classes = useStyles();
   return (
     <Grid container className={classes.container} spacing={3}>
@@ -19,7 +19,7 @@ function App() {
         <Table handleClick={handleClick} />
       </Grid>
       <Grid item xs={4}>
-        <History />
+        <History coordinates={coordinates}/>
       </Grid>
     </Grid>
   );

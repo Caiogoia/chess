@@ -1,15 +1,37 @@
-import { Box, Paper, Typography } from "@material-ui/core";
+import { Box, Paper, Typography,Grid } from "@material-ui/core";
 import useStyles from "./styles";
-const History = ({ jogadas }) => {
+const History = ({ coordinates,player }) => {
   const classes = useStyles();
 
   return (
     <Paper className={classes.boxPaper}>
       <Typography>Historico das jogadas</Typography>
       <Box>
-        {jogadas.map((jogada) => (
-          <h1>{jogada}</h1>
-        ))}
+        <Grid container className={classes.player}>
+          <Grid item xs={6}>
+            <Typography>White</Typography>
+            {coordinates.map((coord,index) => {
+              if(index % 2 === 0){
+                return(
+                  <h1>{coord}</h1>
+                )
+              }
+            })}
+          </Grid>
+          <Grid item xs={6}>
+            <Typography>Black</Typography>
+            {coordinates.map((coord,index) => {
+              if(index % 2 === 1){
+                return(
+                  <h1>{coord}</h1>
+                )
+              }
+            })}
+          </Grid>
+        </Grid>
+       {/*  {coordinates.map((coord) => (
+          <h1>{coord}</h1>
+        ))} */}
       </Box>
     </Paper>
   );
