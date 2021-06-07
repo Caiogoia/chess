@@ -27,10 +27,10 @@ const Table = ({ getCoordinates, handleClick }) => {
     const arr = [];
     for (let x = 0; x < 8; x++) {
       arr.push({
-        label: x + 1,
+        label: 8 - x,
         x: 390,
         y: x * 50 + 5,
-        fill: (x + 1) % 2 === 0 ? "#B58863" : "#F0D9B5",
+        fill: (8 - x) % 2 === 1 ? "#B58863" : "#F0D9B5",
       });
     }
     return arr;
