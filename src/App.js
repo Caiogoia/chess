@@ -13,15 +13,17 @@ function App() {
   console.log(coordinates);
   const classes = useStyles();
   return (
-    <Grid container className={classes.container} spacing={3}>
-      <Grid item xs={4}>
-        {/* <h1>table</h1> */}
-        <Table handleClick={handleClick} />
+    <>
+      <Grid container className={classes.container} spacing={3}>
+        <Grid item xs={4}>
+          {/* <h1>table</h1> */}
+          <Table handleClick={handleClick} />
+        </Grid>
+        <Grid item xs={4}>
+          <History coordinates={coordinates} />
+        </Grid>
       </Grid>
-      <Grid item xs={4}>
-        <History coordinates={coordinates} />
-      </Grid>
-    </Grid>
+    </>
   );
 }
 
