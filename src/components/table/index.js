@@ -1,11 +1,14 @@
 import { Rect, Stage, Layer, Text, Image } from "react-konva";
-import React, { Component } from "react";
-import { render } from "react-dom";
+import React from "react";
 import whitePawn from '../../images/white-pawn.svg'
+import Pieces from '../Pieces'
+import useImage from 'use-image'
 
 const Table = ({ getCoordinates, handleClick }) => {
   const width = 500;
   const height = 500;
+  console.log(whitePawn)
+  const [image] = useImage(whitePawn)
   const l = ["a", "b", "c", "d", "e", "f", "g", "h"];
   const createBoard = () => {
     let arrFunc = [];
@@ -36,6 +39,17 @@ const Table = ({ getCoordinates, handleClick }) => {
     }
     return arr;
   };
+  const createPawns = () => {
+    let arr = []
+    for(let x = 0;x<16;x++){
+      arr.push({
+        x: 50* x,
+        y: 50,
+      })
+    }
+    return arr
+  }
+
   const createLetters = () => {
     const arr = [];
     for (let x = 0; x < 8; x++) {
@@ -51,6 +65,7 @@ const Table = ({ getCoordinates, handleClick }) => {
   const arr = createBoard();
   const numbers = createNumbers();
   const letters = createLetters();
+  const pawns = createPawns()
   return (
     <Stage width={400} height={400}>
       <Layer>
@@ -86,7 +101,9 @@ const Table = ({ getCoordinates, handleClick }) => {
             fill={letter.fill}
           />
         ))}
-       <Image image={whitePawn} />
+        {pawns.map(pw => (
+          <Pieces image={image} x={pw.x} y={pw.y}/>
+        ))}
       </Layer>
     </Stage>
   );
